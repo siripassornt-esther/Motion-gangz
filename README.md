@@ -1,51 +1,55 @@
-# FlowAccount Instagram Reel — Remotion Project
+# Autokey AI — Instagram Reel (FlowAccount)
 
-30-second vertical Instagram Reel (1080 × 1920 @ 30 fps) built with **Remotion 4**.
+30-second vertical Instagram Reel · **1080 × 1920** · **30 fps** · built with **Remotion 4**
+
+Product: **Autokey AI** — OCR auto-scan feature by FlowAccount  
+Brand: Blue `#0082C8` / Light Blue `#00B4D8` · Fonts: Prompt (Thai) + Inter (English)
+
+---
 
 ## Quick Start
 
 ```bash
 npm install
-npm start          # Opens Remotion Studio at http://localhost:3000
+npm start          # Remotion Studio  →  http://localhost:3000
 ```
 
-## Render to MP4
+## Render
 
 ```bash
-npm run render     # Outputs out/FlowAccountReel.mp4  (H.264, CRF 18)
+npm run render     # → out/AutokeyReel.mp4  (H.264, CRF 18)
+npm run still      # → out/preview.png  (frame 0)
 ```
 
-## Grab a Still
+## Scene Map
 
-```bash
-npm run still      # Saves out/preview.png at frame 0
-```
+| # | Scene | Frames | Time | Storyboard |
+|---|---|---|---|---|
+| 1 | **Hook** | 0–89 | 0–3 s | "2025 แล้ว ยังพิมพ์เองอยู่?" — typed-on with red highlight |
+| 2 | **Pain** | 90–239 | 3–8 s | บิลหาย · คีย์พลาด · ทำงานซ้ำซ้อน — pop-in one by one |
+| 3 | **Solution** | 240–359 | 8–12 s | Phone scanning doc with AI scan-line, typed-on "เพียงสแกนบิลด้วย AI Autokey" |
+| 4 | **Features** | 360–599 | 12–20 s | Checklist: OCR · เก็บบิล · ลงบัญชีอัตโนมัติ — tick draw animation |
+| 5 | **Emotional** | 600–749 | 20–25 s | Accountant + business owner handshake, warm uplifting copy |
+| 6 | **CTA** | 750–899 | 25–30 s | White BG, real logo, Autokey badge, green "เริ่มต้นฟรีเลย →" button |
 
 ## Project Structure
 
 ```
+public/
+  logo.png                 FlowAccount logo (served by Remotion)
 src/
   index.ts                 Remotion entry point
-  Root.tsx                 Registers <FlowAccountReel> composition
-  FlowAccountReel.tsx      Main composition — orchestrates all scenes
-  animations.ts            Reusable animation hooks
-  brand.ts                 Colour palette & font tokens
+  Root.tsx                 Font loading + composition registration
+  FlowAccountReel.tsx      Master composition — scene orchestration & cross-fades
+  animations.ts            Reusable hooks: spring slide, typewriter, scale-pop, pulse…
+  brand.ts                 Colour tokens + font family strings
   components/
-    Scene1Hook.tsx          00:00–00:05  Hook / problem statement
-    Scene2Intro.tsx         00:05–00:10  FlowAccount solution intro
-    Scene3Features.tsx      00:10–00:17  Three feature cards
-    Scene4Stats.tsx         00:17–00:23  Social proof / counter stats
-    Scene5CTA.tsx           00:23–00:28  Free trial call to action
-    Scene6Outro.tsx         00:28–00:30  Brand lock-up outro
-STORYBOARD.md              Full scene-by-scene script & visual notes
+    Scene1Hook.tsx
+    Scene2Pain.tsx
+    Scene3Solution.tsx
+    Scene4Features.tsx
+    Scene5Emotional.tsx
+    Scene6CTA.tsx
+brand.md                   Brand guide (source of truth)
+storyboard.md              Scene-by-scene script (source of truth)
 ```
-
-## Customising Content
-
-| What to change | File |
-|---|---|
-| Colours | `src/brand.ts` |
-| Scene text | Individual `src/components/Scene*.tsx` |
-| Timing | `src/FlowAccountReel.tsx` — `SCENES` array |
-| Animation feel | `src/animations.ts` — spring configs |
-| Composition size / fps | `src/Root.tsx` |
